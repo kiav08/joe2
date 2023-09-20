@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -33,12 +33,12 @@ http.listen(port, host, () => {
 io.on("connection", (socket) => {
   console.log("someone connected");
   socket.on("chat message", (msg) => {
-    io.emit("chat message", msg)
-  })
-  socket.on("user joned", username => {
-    console.log(username + "joined the chat")
-    io.emit("chat message", username + "joines the chat")
-  })
+    io.emit("chat message", msg);
+  });
+  socket.on("user joned", (username) => {
+    console.log(username + "joined the chat");
+    io.emit("chat message", username + "joines the chat");
+  });
 });
 
 // server = app.listen(port, () => {
