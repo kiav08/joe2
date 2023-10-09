@@ -52,15 +52,10 @@ io.on("connection", (socket) => {
   socket.on("chat message", (msg) => {
     io.emit("chat message", msg);
     chatLog.push(msg);
-    console.log(chatLog);
   });
   socket.on("user joined", (username) => {
     console.log(username + " joined the chat");
     io.emit("chat message", username + " joined the chat");
-  });
-  socket.on("hola", (besked) => {
-    console.log(besked);
-    io.emit("hola", "besked tilbage til klienten..");
   });
 });
 

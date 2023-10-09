@@ -12,15 +12,6 @@ customerRoutes.get("/", (req, res) => {
   res.send(customers);
 });
 
-customerRoutes.get("/:username", (req, res) => {
-  const user = customers.find(
-    (customer) => customer.username === req.params.username
-  );
-
-  if (user) res.send(user.email);
-  else res.send("Ingen person med dette username").status(404);
-});
-
 customerRoutes.post("/", (req, res) => {
   const newCustomer = req.body;
   customers.push(newCustomer);

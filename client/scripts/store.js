@@ -29,12 +29,7 @@ function getCookie(name) {
   if (parts.length === 2) return parts.pop().split(";").shift();
 }
 
-function checkout() {
-  axios
-    .post("http://localhost:3000/store/checkout", { bag: document.cookie })
-    .then(function (response) {})
-    .catch(function (error) {});
-}
+function checkout() {}
 
 // Extra ting (behøves ikke):
 
