@@ -1,8 +1,14 @@
 const express = require("express");
 const storeRoutes = express.Router();
 
+const chatLog = require("../db/chat");
+
 const cookieParser = require("cookie-parser");
 storeRoutes.use(cookieParser());
+
+storeRoutes.get("/chat", (req, res) => {
+  res.send(chatLog);
+});
 
 storeRoutes.post("/checkout", (req, res) => {
   console.log(req.body.bag);
