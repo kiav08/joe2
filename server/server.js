@@ -41,14 +41,10 @@ app.use("/customer", customerRoute);
 app.use("/store", storeRoutes);
 
 // Start server
-const server = require("http").createServer();
-const port = process.env.PORT || 3000;
 
-server.listen(port, () => console.log(`Listening on ${port}`));
-
-// app.listen(port, () => {
-//   console.log(`Server open on port ${port}`);
-// });
+app.listen(3000, () => {
+  console.log("Server open on port 3000");
+});
 
 // Socket IO
 
@@ -56,13 +52,18 @@ io.on("connection", (socket) => {
   socket.on("chat message", (msg) => {
     io.emit("chat message", msg);
     chatLog.push(msg);
+    console.log(chatLog);
   });
   socket.on("user joined", (username) => {
     console.log(username + " joined the chat");
     io.emit("chat message", username + " joined the chat");
   });
+  socket.on("hola", (besked) => {
+    console.log(besked);
+    io.emit("hola", "besked tilbage til klienten..");
+  });
 });
 
-http.listen(port, "localhost", () => {
-  console.log(`Socket.IO server running at http://localhost:${port}/`);
+http.listen(3000, "localhost", () => {
+  console.log(`Socket.IO server running at http://localhost:3000/`);
 });

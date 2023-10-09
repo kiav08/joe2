@@ -42,3 +42,23 @@ socket.on("chat message", (msg) => {
   messages.appendChild(item);
   window.scrollTo(0, document.body.scrollHeight);
 });
+
+// Hent chatbeskeder:
+
+function seChat() {
+  axios
+    .get("http://localhost:3000/store/chat")
+    .then(function (response) {
+      console.log(response);
+      document.cookie = response.data[0];
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
+
+// Server besked
+
+function serverBesked() {
+  socket.emit("hola", "Besked til server her.");
+}
