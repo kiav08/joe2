@@ -41,9 +41,13 @@ app.use("/customer", customerRoute);
 app.use("/store", storeRoutes);
 
 // Start server
+const server = require("http").createServer();
+const port = process.env.PORT || 3000;
 
-app.listen(3030, () => {
-  console.log("Server open on port 3030");
+server.listen(port, () => console.log(`Listening on ${port}`));
+
+app.listen(port, () => {
+  console.log(`Server open on port ${port}`);
 });
 
 // Socket IO
@@ -59,6 +63,6 @@ io.on("connection", (socket) => {
   });
 });
 
-http.listen(3030, "localhost", () => {
-  console.log(`Socket.IO server running at http://localhost:3030/`);
+http.listen(port, "localhost", () => {
+  console.log(`Socket.IO server running at http://localhost:${port}/`);
 });
