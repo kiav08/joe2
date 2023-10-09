@@ -46,9 +46,9 @@ const port = process.env.PORT || 3000;
 
 server.listen(port, () => console.log(`Listening on ${port}`));
 
-app.listen(port, () => {
-  console.log(`Server open on port ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Server open on port ${port}`);
+// });
 
 // Socket IO
 
